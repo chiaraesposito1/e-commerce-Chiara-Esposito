@@ -164,7 +164,6 @@ let userName = "Julio"
 let userLastName = "Avantt"
 let userAge = 18
 
-
 //Objeto, alternativa a lo de arriba
 let user = {
     name: "Julio",
@@ -186,9 +185,6 @@ const usuario = {
 }
 user.nation = "Chaco" //le agregue una propiedad
 user.lastName = "Alvarez" //Mutar un objeto: aca si se cambia de valor aunque sea const
-
-user.dicePavadas()
-//this es todo el contenido (name, apellido, edad y funcion) de usuario 
 
 //Ver si la propiedad existe o no
 if("dignidad" in user){
@@ -228,7 +224,7 @@ alert(`Mi equipo es ${equipos[equipo].nombre} y mi idolo es: ${equipos[propiedad
 console.log(equipos.boca.titulos);
 
 
-//ejercicio
+//CLASES 
 let direccionMai ={
     calle: "nuñez",
     piso: 2,
@@ -237,7 +233,6 @@ let direccionMai ={
     pais: "Argentina"
 }
 //crear la direccion de tooodos las personas para eso usamos las clases
-//CLASES
 
 class direccion{
     constructor(calle, piso, dept, CP, pais){ //funcion interna
@@ -250,14 +245,68 @@ class direccion{
  //metodos de una clase
   getDireccion(){
     return `mi direccion es: ${this.calle}`
-
  }
 }
-
-const direccionLauta = new direccion("Urquiza", 2, "A", 1431, "Argentina") //invocamos a la clase que termina siendo objeto, llamamos a la clase y ponemos los argumentos
-
+ //invocamos a la clase que termina siendo objeto, llamamos a la clase y ponemos los argumentos
+const direccionLauta = new direccion("Urquiza", 2, "A", 1431, "Argentina")
 const direccionFran = new direccion ("Palermo", 3, "B", 1412, "Chile")
-
 const direccionChia = new direccion ("Saavedra", 7, "B", 1431, "Argentina")
 console.log(direccionChia.getDireccion()) // resultado "mi direccion es saavedra"
 
+
+//EJERCICIO MOSTRAR EN TABLA
+class pc {
+    constructor(ram, monitor, fuente, red){
+       this.ram = ram; 
+       this.fuente = fuente;
+       this.monitor = monitor;
+       this.red = red;
+    }
+    random (){
+        return Math.random() *100 /*num aleatoreo entre 1 y 100 */
+    }   
+}
+
+function showTable (obj) { //Mostrar como tabla
+    console.table(obj); //recine un objeto
+}
+
+function createInstanciaPC () { //creamos un objeto que esté basado en la clase
+     let ram = prompt("Ingresa RAM: ")
+     let fuente = prompt("Ingresa fuente: ")
+     let monitor = prompt("Ingresa monitor: ")
+     let red = prompt("Ingresa red: ")
+
+     const myPC = new pc(ram, monitor, fuente, red) //creamos un objeto
+
+     showTable(myPC);
+}
+createInstanciaPC()
+
+
+//ARRAYS
+let compras = ["Pan", "Leche", "Fideos"];
+console.log(compras[0]) //llamamos por el índice (pan).
+console.log(compras.at(0)) //lo mismo que el primero
+console.log(compras.at(-1)) //me da el ultimo elemento del array.
+
+//ARRAYS DE OBJETOS 
+
+const personas = [ //1 objeto con dos elemento
+    {
+    nombre: "Julio",
+    edad: 18 
+    },
+    {
+    nombre: "Sofia",
+    edad: 20
+    }
+]
+console.log(personas) //accedemos al array
+console.log(personas.at(0)) //accedemos al obj
+console.log(personas.at(0).age) //accedemos a la propiedad del obj
+
+//BUCLES EN ARRAYS
+for (let persona of personas){ //cada elemento se llama persona que está dentro de personas
+    console.log(`Mi nombre es: ${persona.nombre} y mi edad es: ${persona.edad}`)
+}
