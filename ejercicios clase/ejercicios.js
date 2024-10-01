@@ -310,3 +310,113 @@ console.log(personas.at(0).age) //accedemos a la propiedad del obj
 for (let persona of personas){ //cada elemento se llama persona que está dentro de personas
     console.log(`Mi nombre es: ${persona.nombre} y mi edad es: ${persona.edad}`)
 }
+
+//INDEXOF ARRAYS -1 Si el elemento existe en el array 
+let arr = ["papa", "naranja"]
+let indexOf = arr.indexOf("Manzana")
+
+if (indexOf > -1){
+    console.log("cobrar")
+}
+
+
+//ejercicio 
+let lista =[2, 4]
+
+function pregunta(){
+    let respuesta = prompt ("Que quieres hacar? a) Ver lista / b) Agregar a la lista / C)")
+
+    if(respuesta == "a"){
+        console.log(lista)
+    }else if(respuesta == "b"){
+        let item = prompt("Que quieres agregar?")
+        if(lista.includes(item)){ //si existe la letra
+            console.log("Ya está ese elemento")
+        }else{
+            lista.push(item)
+            console.log("Elemento agregado")
+        }
+       
+    }else{
+        lista.reverse();
+        console.log("Lista invertida")
+        console.log(lista)
+    }
+}
+pregunta()
+
+//FUNCION DE ORDEN SUPERIOR:
+//MAP : devuelve la misma cant de elementos del primer array pero transformados
+const triste = ["Julio", "Maria"];
+const feliz = triste.map((persona) => `helado ${persona}`) //funcion flecha
+
+const nums = [2, 3, 4];
+const doble = nums.map((num) => num * 2) //funcion flecha
+
+//FOR EACH : me da el resultado de la cuenta
+const numeros = [2, 3, 4];
+numeros.foreach((num) => console.log (num - 1 )) // 1, 2, 3
+
+//FILTER : crea un nuevo array con los elementos que cumplan la condicion
+const estudiantes = [
+    {name: "Julio", nota: 1},
+    {name: "Sol", nota: 7},
+    {name:"jaz", nota: 8}
+]
+const aprobaron = estudiantes.filter((estudiante) => estudiante.nota > 6)
+console.log(aprobaron.length) // me pasa num 2 (solo aprobaron dos)
+//[{name: "Sol", nota:7}, {name: "Jaz", nota:8}]
+
+//FIND: devuelve el primer elemento (obj) que cumpla la condicion.
+const personass = [
+    {name: "Julio", nota: 1},
+    {name: "Sol", nota: 7},
+    {name:"jaz", nota: 8}
+]
+const aprobo = personass.find((persona) => persona.nota > 6)
+console.log(aprobo.length) //[name: "Sol", nota:7]
+
+//EVERY: AND: devuelve TODOS si cumple con la condicion (TRUE), 
+//si uno solo o dos cumple con la condicion, false. 
+const alumnos = [
+    {name: "Julio", nota: 1},
+    {name: "Sol", nota: 7},
+    {name:"jaz", nota: 8}
+]
+const apruebaronTodos = alumnos.every((alumno) => alumno.nota > 6)
+
+//SOME: como si fuera OR si se cumple una condicion, verdadero sino false
+const alumnoss = [
+    {name: "Julio", nota: 1},
+    {name: "Sol", nota: 7},
+    {name:"jaz", nota: 8}
+]
+const apruebaron = alumnoss.some((alumno) => alumno.nota > 6)
+
+//REDUCE
+const persona = [
+    {name: "Julio", nota: 1},
+    {name: "Sol", nota: 7},
+    {name:"jaz", nota: 8}
+]
+const sumaNotas = persona.reduce((acumulador, actual) => 
+    acumulador + actual.nota, 0)
+//Rsta: suma todas las notas: 16
+//le paso dos argumentos separados por coma el 0 es valor inicial
+
+//SORT
+
+const estud = [
+    {nota: 3},
+    {nota: 5},
+    {nota: 2},
+]
+const ordenPeorNota = estud.sort((a, b) => a.nota - b.nota) 
+//es de menor a mayor porque a y b toman los primero numeros
+const ordenMayorNota = estud.sort((a, b) => b.nota - a.nota) 
+//si invierto a y b notas es mayor a menor
+
+
+//WINDOW.LOCATION
+window.location.search.split("=") [1] 
+//accedemos al producto
