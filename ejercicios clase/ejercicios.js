@@ -416,7 +416,125 @@ const ordenPeorNota = estud.sort((a, b) => a.nota - b.nota)
 const ordenMayorNota = estud.sort((a, b) => b.nota - a.nota) 
 //si invierto a y b notas es mayor a menor
 
-
-//WINDOW.LOCATION
+//WINDOW.LOCATION: accedemos al producto
 window.location.search.split("=") [1] 
-//accedemos al producto
+
+//MÉTODOS STRING(input)
+const urlSeatch = "?prod=1"
+const arrayFromURL = urlSearch.split("=") //separa los elementos por coma
+
+//REPLACE ALL: reemplazo o por a
+const gata = "goto";
+gata.replaceAll("o", "a")
+
+//SACA LOS ESPACIOS EN BLANCO
+gata.trim()
+
+//MÉTODOS EN NUMBERS
+//NAN: true / false
+Number.isNaN(NaN) //el valor va adentro del paréntesis
+
+//PARSEFLOAT: si hay un string numerico lo convierte en flotante
+let pi = "3.14"  //string
+Number.parseFloat(pi) //convierto a numero
+
+//MÉTODO OBJETO
+//KEYS y VALUES
+const charla =  {
+    expositora: "Ana", 
+    tema: "procrastinacion",
+    hora: "19:30"
+}
+const key = Object.keys(charla) //me muestra solo las keys y no los valores
+const values = Object.values(charla)
+
+//QUERY SELECTOR 
+let div2 = document.querySelector("div") //agarra el primer div
+let div3 = document.querySelectorAll("div")[3]; //solo el div con este indice
+let div4 = document.querySelectorAll("div") //agarra todos
+
+//INNER HTML -> se puede cambiar lo que está dentro del script: p.innerHtml
+//INNER TEXT -> cambio el texto: p.innerText = "cambio"
+
+//CREATE ELEMENT
+const h2 = document.createElement("h2")
+h2.innerText = "soy un h2"
+document.body.append(h2) //insertamos en el dom, aparece al final
+document.body.prepend(h2) //que aparezca al principio 
+
+//ejercicio de crear un elemento por medio de los datos ingresados por el user
+function construirHTML (){
+    let elemento = prompt("Agregar un elemento");
+
+    switch(elemento){
+        case "button":
+            let button = document.createElement("button")
+            let text = prompt("que texto queres argregar");
+            button.innerText = text;
+            document.body.append(button)
+            break;
+        case "input":
+            let input = document.createElement("input")
+            document.body.append(input) //insertamos en el body
+            break;
+        case "textarea":
+            let textarea = document.createElement("textarea")
+            document.body.append(textarea)
+            break;
+        case "h1":
+            let h1 = document.createElement("h1") //creamos un h1
+            let texth1 = prompt("que texto queres argregar"); //le ponemos nombre
+            h1.innerText = texth1;
+            document.body.append(h1)
+            break;
+        case "p":
+            let p = document.createElement("p")
+            let textP = prompt("que texto queres argregar");
+            p.innerText = textP;
+            document.body.append(p)
+            break;
+    }
+
+}
+construirHTML();
+
+
+//EVENTOS  esto en html
+<button id="filter">Filter</button>
+<input/>
+<button id="reset">Limpiar</button>
+
+//capturar el boton 
+const buttonFilter = document.querySelector("#filter")
+const buttonReset = document.querySelector("#reset")
+const input = document.querySelector("input");
+
+//cada vez que toque el boton me muestra el valor y el otro lo elimina
+buttonFilter.addEventListener("click", filterList)
+buttonReset.addEventListener("click", filterList)
+
+const data = [
+    {name: "Juli"},
+    {name:"Tomas"},
+    {name:"lili"},
+]
+const ul = document.querySelector("ul")
+const lis = data.map(li =>`<li>${lis.name}</li>`)
+
+//eventos
+const filterList = () => {
+    const filtered = data.filter(item.name.toLowerCase() === input.value.toLowerCase() )
+    if(filtered.length === 1){
+        const lis = data.map((li) => `<li>${lis.name}</li>`)
+        ul.innerHTML = lis.join("")
+    } else{
+    ul.innerHTML = "No existe";
+    }
+
+}
+const resetInput =() => {
+    input.value = "";
+    const lis = data.map(li => `<li>${lis.name}</li>`)
+    ul.innerHTML = lis.join("")
+}
+
