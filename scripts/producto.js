@@ -1,28 +1,42 @@
+import {data} from "./scripts/data.js"
+
 class producto {
-    constructor (id, trailer, title, description, price, image){
+    constructor (id, price, title, description, genre, image){
         this.title = title,
         this.description = description,
         this.image = image,
-        this.precio = price,
-        this.trailer = trailer,
+        this.genre = genre,
+        this.price = price,
         this.id = id
     }
 }
 
-let main = document.querySelector("main");
+//accedemos al producto, split separa el = por una coma. Busco el segundo valor del producto, [1]
+const peliculaId = window.location.search.split("=")[1];
+const peliculaFiltered = data.find((pelicula) => pelicula.id === peliculaId);
+//encontrar en película los que cumplan la condición.
 
-main.innerHTML =  `<div class="card">
-        <img src="${pelicula.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-        <h5 class="card-title-1">${pelicula.title}</h5>
-        <p class="card-text-1">${pelicula.description}</p>
-        <p class="card-text-1">${pelicula.price}</p>
-        <p class="card-text-1">${pelicula.trailer}</p>
-        <a href="/producto.html?prod=${pelicula.id}" class="btn-card">Ver más</a>
-        </div>
+if(peliculaFiltered){
+    let main = document.querySelector("main");
+    main.innerHTML =  `
+            <div class="row">
+                <div class="col-6">
+                    <img src="${peliculaFiltered.image}" class=" mb-4 rounded-start">
+                </div>
+                <div class="col-6">
+                    <h1 class="mb-2">${peliculaFiltered.title}</h1>
+                    <p>${peliculaFiltered.description}</p>
+                    <p class="text-light"Precio: ${peliculaFiltered.price}</p>
+                    <a href="./index.html" class="btn mt-2">Volver al Home</a>
+                </div>
+            </div>
         </div>`;
+        
 
-
+    } else{
+        let main = document.querySelector("main");
+        main.innerHTML = `<p>Este producto no está disponible</p>`;
+    }
 
 
 

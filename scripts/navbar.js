@@ -9,11 +9,9 @@ let navbar = [
 header.innerHTML = `
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item"></li>
         </ul>
-      </div>
       <div class="search-bar">
         <input type="text" placeholder="Escribí el nombre de la película..."/>
         <button class="btn-buscar">Buscar</button>
@@ -28,4 +26,6 @@ for(let categoria of navbar) {
     navItems.innerHTML += `
       <a class="nav-link" href="${categoria.href}"> ${categoria.tituloCategoria}</a>`
   }
+
+  
 
