@@ -4,10 +4,10 @@ const h1 = document.querySelector("h1");
 const container = document.querySelector(".container-products");
 h1.innerText = "Películas";
 
-  //elementos del array transformados (función)
 
-  const cards = data.map((pelicula) => {
-      return  `  
+//elementos del array transformados (función)
+function cards (data){
+  const cardsArray = data.map((pelicula) => `
       <div class="card">
       <img src=${pelicula.image} class="card-img-top" alt="...">
           <div class="card-body">
@@ -18,45 +18,33 @@ h1.innerText = "Películas";
             <a href="/producto.html?prod=${pelicula.id}" class="btn-card">Ver más</a>
           </div>
     </div>`
-})
-
-container.innerHTML = cards.join("");
+  )
+    document.querySelector(".container-products").innerHTML = cardsArray.join("")
+}
+cards(data)
 
 //Search
 const btnBuscar = document.querySelector(".btn-buscar")
 const btnReset = document.querySelector(".btn-reset")
 const input = document.querySelector("input")
 
-const lista = data.map((li) => `<li>${li.title}</li>`)
-cards.innerHTML = lista.join("")
-//cards: contenedor de información de la card
-
 //Eventos
 const busqueda = () => {
-  //Filtrar el orginal 
-  const filterData = data.filter((pelicula) => pelicula.title.toLowerCase() === input.value.toLowerCase())
+  const filterData = data.filter((item) => item.title.toLowerCase() === input.value.toLowerCase());
   
   if(filterData.length === 1){ 
-      const lista = filterData.map((li) => `<li>${li.title}</li>`)
-      cards.innerHTML = lista.join("");
+      cards(filterData)
   }else{
-      cards.innerHTML = "No existe esa película"
+      cards.innerHTML = "No existe esa película";
   }
-
-  filterData.innerHTML = cards.join("");
 }
 const reset = () => {
-  input.value = "" //vacio
-  const lista = data.map((li) => `<li>${li.title}</li>`)
-  cards.innerHTML = lista.join(""); 
-}
+  input.value = ""
+} //vacio
 
 //Hacer que funcione
 btnBuscar.addEventListener("click", busqueda)
 btnReset.addEventListener("click", reset)
-
-filterData.innerHTML = cards.join("")
-
 
 
 
